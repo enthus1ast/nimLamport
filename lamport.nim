@@ -3,13 +3,13 @@
 type 
   Lamport = int
  
-proc newLamport(initialValue: int = 0): Lamport = 
+proc newLamport*(initialValue: int = 0): Lamport = 
   result = initialValue
 
-proc send(lamport: var Lamport) = 
+proc send*(lamport: var Lamport) = 
   lamport.inc 1
 
-proc recv(lamport: var Lamport, remoteTimestampt: int = 0)=
+proc recv*(lamport: var Lamport, remoteTimestampt: int = 0)=
   lamport = max(lamport, remoteTimestampt) + 1
 
 
