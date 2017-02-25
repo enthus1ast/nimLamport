@@ -1,7 +1,7 @@
 ## The Lamport timestamp/clock
 
 type 
-  Lamport = int
+  Lamport* = int
  
 proc newLamport*(initialValue: int = 0): Lamport = 
   result = initialValue
