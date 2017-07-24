@@ -7,10 +7,18 @@ proc newLamport*(initialValue: int = 0): Lamport =
   result = initialValue
 
 proc send*(lamport: var Lamport) = 
-  lamport.inc 1
+  try:
+    lamport.inc 1
+  except OverflowError:
+    # in case of an overflow set to zero
+    lamport = 0
+
 
 proc recv*(lamport: var Lamport, remoteTimestampt: int = 0)=
-  lamport = max(lamport, remoteTimestampt) + 1
+  try:
+    lamport = max(lamport, remoteTimestampt) + 1
+  except OverflowError: 
+    lamport = 0
 
 
 when isMainModule:
