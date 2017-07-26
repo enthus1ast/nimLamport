@@ -1,9 +1,9 @@
 ## The Lamport timestamp/clock
 
 type 
-  Lamport* = int
+  Lamport* = int32
  
-proc newLamport*(initialValue: int = 0): Lamport = 
+proc newLamport*(initialValue: int32 = 0): Lamport = 
   result = initialValue
 
 proc send*(lamport: var Lamport) = 
