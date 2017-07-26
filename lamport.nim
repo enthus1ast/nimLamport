@@ -14,7 +14,7 @@ proc send*(lamport: var Lamport) =
     lamport = 0
 
 
-proc recv*(lamport: var Lamport, remoteTimestampt: int = 0)=
+proc recv*(lamport: var Lamport, remoteTimestampt: int32 = 0)=
   try:
     lamport = max(lamport, remoteTimestampt) + 1
   except OverflowError: 
